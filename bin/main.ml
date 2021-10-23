@@ -72,34 +72,3 @@ let rec mainloop program_state modem_status internet_status =
 
 let () =
   mainloop MonitoringModem (Waiting (now ())) (Down (now ()))
-
-
-
-
-
-
-
-
-
-
-
-(* Testing: *)
-      
-(* let () =
- *   match (get_modem_status 120 (Down 0)) with
- *   | Waiting since -> print_endline ("waiting" ^ string_of_int since)
- *   | Down since -> print_endline ("down " ^ string_of_int since)
- *   | Up   since -> print_endline ("up " ^ string_of_int since)
- * 
- * 
- * let () =
- *   match (get_internet_status (Down 0)) with
- *   | Waiting since -> print_endline ("waiting" ^ string_of_int since)
- *   | Down since -> print_endline ("down " ^ string_of_int since)
- *   | Up   since -> print_endline ("up " ^ string_of_int since)
- * 
- * 
- * let () = can_ping "wlp3s0" "google.com" |> string_of_bool |> print_endline
- * let () = can_curl "wlp3s0" "10" "google.com" |> string_of_bool |> print_endline *)
-
-  
