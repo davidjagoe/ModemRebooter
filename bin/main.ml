@@ -46,15 +46,15 @@ let get_internet_status previous_status =
 let rec mainloop program_state modem_status internet_status =
 
   let () = Unix.sleep 1 in
-  
+
   match program_state with
 
   | MonitoringModem ->
       print_endline "Monitoring modem";
       (let new_modem_status = get_modem_status 5 modem_status in
        match new_modem_status with
-       | Waiting _ -> mainloop MonitoringModem new_modem_status internet_status
-       | Down _ -> mainloop MonitoringModem new_modem_status internet_status
+       | Waiting _ -> mainloop MonitoringModem new_modem_status (Down (now ()))
+       | Down _ -> mainloop MonitoringModem new_modem_status (Down (now ()))
        | Up   _ -> mainloop MonitoringInternet new_modem_status (Down (now ())))
 
   | MonitoringInternet ->
